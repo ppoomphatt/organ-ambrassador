@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แพลตฟอร์มจำลองการตัดสินใจสำหรับเยาวชน | โครงการนวัตกรรมระดับชาติ</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <section id="screen-splash" class="active">
+            <div class="logo">YDSP</div>
+            <h1>แพลตฟอร์มจำลองการตัดสินใจ</h1>
+            <p>โครงการพัฒนานวัตกรรมและทักษะชีวิตเยาวชนไทย</p>
+            <button onclick="showScreen('screen-register')" class="btn-primary">เริ่มต้นการจำลอง</button>
+        </section>
+
+        <section id="screen-register">
+            <h2>ลงทะเบียนผู้เข้าชม</h2>
+            <div class="form-group">
+                <input type="text" id="player-name" placeholder="ชื่อ-นามสกุล" autocomplete="off">
+                <input type="text" id="school-name" placeholder="ชื่อโรงเรียน หรือ หน่วยงาน" autocomplete="off">
+            </div>
+            <button onclick="handleRegistration()" class="btn-primary">ดำเนินการต่อ</button>
+        </section>
+
+        <section id="screen-survey">
+            <h2>แบบประเมินพฤติกรรมเบื้องต้น</h2>
+            <p id="survey-question"></p>
+            <div id="survey-options" class="options-vertical"></div>
+        </section>
+
+        <section id="screen-game">
+            <div class="game-header">
+                <span id="progress-text">สถานการณ์ที่ 1 จาก 20</span>
+                <div class="progress-bar-container"><div id="progress-bar"></div></div>
+            </div>
+            <div class="scenario-box">
+                <p id="scenario-text"></p>
+                <div id="game-options" class="options-vertical"></div>
+            </div>
+        </section>
+
+        <section id="screen-results">
+            <h2>ผลการจำลองสถานการณ์</h2>
+            <div class="profile-card">
+                <h3 id="profile-title">กำลังวิเคราะห์...</h3>
+                <p id="profile-desc"></p>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="behaviorChart"></canvas>
+            </div>
+
+            <div class="ending-box">
+                <h4>บทสรุปชีวิตของคุณ</h4>
+                <p id="ending-text"></p>
+            </div>
+
+            <div class="leaderboard-section">
+                <h3>ตารางอันดับสถานศึกษา (ค่าเฉลี่ยระดับชาติ)</h3>
+                <div class="table-scroll">
+                    <table id="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>สถานศึกษา</th>
+                                <th>คะแนนการตัดสินใจ</th>
+                                <th>จำนวนผู้เล่น</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <button onclick="location.reload()" class="btn-secondary">ทำแบบจำลองอีกครั้ง</button>
+        </section>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
